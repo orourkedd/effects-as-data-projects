@@ -1,12 +1,39 @@
 import http from 'effects-as-data-http';
 import { mergeAll } from 'ramda';
 
-function setState (key, payload) {
+function setState (payload) {
   return {
     type: 'setState',
-    key,
     payload
   }
 }
 
-export default mergeAll([http.actions, { setState }]);
+function getLocal (key) {
+  return {
+    type: 'getLocal',
+    key
+  }
+}
+
+function setLocal (key, value) {
+  return {
+    type: 'setLocal',
+    key,
+    value
+  }
+}
+
+function clearLocal (key) {
+  return {
+    type: 'clearLocal',
+    key
+  }
+}
+
+function blowUp (key) {
+  return {
+    type: 'blowUp'
+  }
+}
+
+module.exports = mergeAll([http.actions, { getLocal, setLocal, clearLocal, blowUp }, { setState }]);

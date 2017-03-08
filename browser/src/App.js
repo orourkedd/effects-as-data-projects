@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Form from './Form';
+import Log from './Log';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getRepositories();
-  }
-
   render() {
-    const repos = this.props.state.repos || [];
-    const { loading, failed } = this.props.state;
+    const { state, actions } = this.props;
+    const repos = state.repos || [];
+    const { loading, failure } = state;
+    const { getRepositories, setState, blowUp } = actions;
 
     return (
       <div className="App">
@@ -17,16 +17,25 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>All My Repos</h2>
         </div>
-        { loading && <h1>Loading...</h1> }
-        { failed && <h1>There was a problem loading the repos :-(</h1> }
-        {repos.map((repo) => {
-          return (
-            <section key={repo.name}>
-              <h1>{repo.name}</h1>
-              <p>{repo.url}</p>
-            </section>
-          )
-        })}
+        <div id="repos">
+          <Form
+            setState={setState}
+            blowUp={blowUp}
+            state={state}
+            fetchRepos={getRepositories}
+          />
+          { loading && <h1>Loading...</h1> }
+          { failure && <h1>{failure.error.message}</h1> }
+          {repos.map((repo) => {
+            return (
+              <section key={repo.name}>
+                <h1>{repo.name}</h1>
+                <p>{repo.url}</p>
+              </section>
+            )
+          })}
+        </div>
+        <Log state={state} />
       </div>
     );
   }

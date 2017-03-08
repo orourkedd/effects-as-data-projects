@@ -1,16 +1,51 @@
-import actions from '../actions';
-import { isFailure } from 'effects-as-data';
+import { setState, getLocal, setLocal, httpGet } from '../actions';
+import { isFailure, success, failure } from 'effects-as-data';
 
 function * getRepositories (username) {
-  yield actions.setState('loading', true);
-  const repos = yield actions.httpGet(`/users/${username}/repos`);
-  if (isFailure(repos)) {
-    const a1 = actions.setState('loading', false);
-    const a2 = actions.setState('failed', true);
-    return yield [a1, a2];
+  //  Do some validation
+  if (!username) {
+    const f = failure('username is required.');
+    yield setState(failureState(f));
+    return f;
   }
-  yield actions.setState('loading', false);
-  yield actions.setState('repos', repos.payload);
+  //  Check local cache for repos
+  const cached = yield getLocal(`${username}:repos`)
+
+  //  If repos in cache, set state
+  if (cached.payload) return yield setState(successState(cached.payload));
+
+  //  Show loading message
+  yield setState(loadingState());
+
+  //  Get repos from Github API
+  const repos = yield httpGet(`/users/${username}/repos`);
+
+  //  Handle failure, show failure message
+  if (isFailure(repos)) {
+    yield setState(failureState(repos));
+    return repos;
+  }
+
+  //  Set the repos on the state
+  yield setState(successState(repos.payload));
+
+  //  Cache the repos in local storage
+  yield setLocal(`${username}:repos`, repos.payload);
+
+  //  Return success by convention (not required)
+  return success();
+}
+
+function loadingState () {
+  return { repos: [], loading: true, failure: false };
+}
+
+function successState (repos) {
+  return { repos, loading: false, failure: false };
+}
+
+function failureState (failure) {
+  return { repos: [], loading: false, failure };
 }
 
 module.exports = {
