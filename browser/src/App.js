@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Form from './Form';
 import Log from './Log';
@@ -14,8 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>All My Repos</h2>
+          <h2>Effects as Data in Browser</h2>
+          <a>https://github.com/orourkedd/effects-as-data-projects/tree/master/browser</a>
         </div>
         <div id="repos">
           <Form
