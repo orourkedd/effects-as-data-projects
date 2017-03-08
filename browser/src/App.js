@@ -14,7 +14,8 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Effects as Data in Browser</h2>
-          <a>https://github.com/orourkedd/effects-as-data-projects/tree/master/browser</a>
+          <p>https://github.com/orourkedd/effects-as-data-projects/tree/master/browser</p>
+          <p>Base on effects-as-data: https://github.com/orourkedd/effects-as-data</p>
         </div>
         <div id="repos">
           <Form
