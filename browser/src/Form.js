@@ -9,6 +9,7 @@ class Form extends Component {
   render () {
     return (
       <form onSubmit={this.submit.bind(this)}>
+        <p>Enter a Github Username:</p>
         <input type='text' value={this.props.state.username} onChange={(e) => this.props.setState({username: e.target.value})}/>
         <input type='submit' value='Submit' />
         <a onClick={this.props.blowUp} id='fail'>Fail on Purpose</a>
