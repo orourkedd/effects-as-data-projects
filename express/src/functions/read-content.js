@@ -1,7 +1,7 @@
 const actions = require('../actions')
 
-//  @see https://github.com/orourkedd/effects-as-data#readfile
 function * readContent () {
+  //  @see https://github.com/orourkedd/effects-as-data#readfile
   return yield actions.readFile('content.txt', { encoding: 'utf8' })
 }
 
