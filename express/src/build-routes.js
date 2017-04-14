@@ -34,7 +34,7 @@ function buildRoute (fn) {
 
     fn(requestAsData)
     .then((result) => {
-      //  what the heck is going on here?
+      //  what are these `success`es and `failure`s?
       //  @see https://github.com/orourkedd/simple-protocol
       //  Simple protocol makes working with errors the same as
       //  working with any other kind of data.  It is loosely
