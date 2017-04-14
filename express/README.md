@@ -2,27 +2,31 @@
 
 This example shows how to use `effects-as-data` with Express.  By using `effects-as-data` with Express, you can write complex middleware and business logic using only easy-to-test, pure, deterministic functions.
 
-# Install
+## Getting Started
+
+### Install
 ```
 npm install
 ```
 
-# Testing
+### Testing
 ```
 npm test
 ```
 
-# Start
+### Start
 ```
 npm start
 ```
 
-## Hello World
+## Routes
+
+### Hello World
 ```
 curl http://localhost:3000
 ```
 
-## Write the string "foo" to a file
+### Write the string "foo" to a file
 ```
 curl -X PUT \
   http://localhost:3000/content \
@@ -32,7 +36,7 @@ curl -X PUT \
 }'
 ```
 
-## Read the contents of the file
+### Read the contents of the file
 ```
 curl http://localhost:3000/content
 ```
