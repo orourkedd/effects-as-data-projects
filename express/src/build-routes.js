@@ -34,6 +34,11 @@ function buildRoute (fn) {
 
     fn(requestAsData)
     .then((result) => {
+      //  what the heck is going on here?
+      //  @see https://github.com/orourkedd/simple-protocol
+      //  Simple protocol makes working with errors the same as
+      //  working with any other kind of data.  It is loosely
+      //  inspired by go's handling of errors.
       if (isSuccess(result)) {
         res.send(result.payload)
       } else if (isFailure(result)) {
