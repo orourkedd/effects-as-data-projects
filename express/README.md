@@ -2,6 +2,11 @@
 
 This example shows how to use `effects-as-data` with Express.  By using `effects-as-data` with Express, you can write complex middleware and business logic using only easy-to-test, pure, deterministic functions.
 
+# Testing
+```
+npm test
+```
+
 ## Hello World
 ```
 curl http://localhost:3000
