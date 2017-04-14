@@ -4,8 +4,8 @@ const { success, isFailure } = require('effects-as-data')
 function * zen () {
   //  Check the in-memory cache for some zen
   //  @see https://github.com/orourkedd/effects-as-data#getstate
-  const cachedZen = yield actions.getState(['zen'])
-  if (cachedZen.payload.zen) return { body: cachedZen.payload.zen }
+  const cached = yield actions.getState(['zen'])
+  if (cached.payload.zen) return { body: cached.payload.zen }
 
   //  Get some zen
   //  @see https://github.com/orourkedd/effects-as-data#httpget
