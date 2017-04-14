@@ -15,7 +15,8 @@ function * zen () {
   //  Write to in-memory cache
   //  If this fails, we still want to return "zen".  effects-as-data will
   //  automatically handle this failure so it doesn't need to be handled here.
-  //  @see https://github.com/orourkedd/effects-as-data#setstate
+  //  @see https://github.com/orourkedd/effects-as-data#logging-action-failures for handling failures universally
+  //  @see https://github.com/orourkedd/effects-as-data#setstate for the setState action
   yield actions.setState({
     zen: zen.payload
   })
