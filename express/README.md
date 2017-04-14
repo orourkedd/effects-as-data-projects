@@ -40,3 +40,8 @@ curl -X PUT \
 ```
 curl http://localhost:3000/content
 ```
+
+### Zen - Something a little more complex with multiple side effects
+```
+curl http://localhost:3000/zen
+```

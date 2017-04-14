@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 app.get('/', functions.helloWorld)
 app.get('/content', functions.readContent)
 app.put('/content', functions.writeContent)
+app.get('/zen', functions.zen)
 
 const port = process.env.PORT || 3000
 
