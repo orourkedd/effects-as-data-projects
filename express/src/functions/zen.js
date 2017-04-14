@@ -5,11 +5,13 @@ function * zen () {
   //  Check the in-memory cache for some zen
   //  @see https://github.com/orourkedd/effects-as-data#getstate
   const cached = yield actions.getState(['zen'])
+  //  @see https://github.com/orourkedd/simple-protocol for understanding `payload`
   if (cached.payload.zen) return { body: cached.payload.zen }
 
   //  Get some zen
   //  @see https://github.com/orourkedd/effects-as-data#httpget
   const zen = yield actions.httpGet('https://api.github.com/zen')
+  //  @see https://github.com/orourkedd/simple-protocol for understanding `isFailure`
   if (isFailure(zen)) return zen
 
   //  Write to in-memory cache
