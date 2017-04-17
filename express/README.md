@@ -17,7 +17,7 @@ This example shows how to use `effects-as-data` with Express.  By using `effects
 
 3) Business logic function yields an action(s) to the E13A runtime.  An action is a JSON object with a `type` field and some metadata describing a side effect operation. The E13A runtime routes the action to a side effect handler.
 ```
-//  Write file action
+//  Write file action.  This is the output of actions.writeFile(...)
 {
   type: 'node',
   module: 'fs',
