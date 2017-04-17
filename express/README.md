@@ -2,7 +2,7 @@
 
 This example shows how to use `effects-as-data` with Express.  By using `effects-as-data` with Express, you can write complex middleware and business logic using only easy-to-test, pure, deterministic functions.
 
-## Application Architecture
+## Request Handling Diagram
 ![Effects-as-data HTTP Architecture](https://s3-us-west-2.amazonaws.com/effects-as-data/http-effects-as-data-v4.png)
 
 1) Client makes HTTP request.
