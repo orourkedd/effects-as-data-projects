@@ -2,6 +2,19 @@
 
 This example shows how to use `effects-as-data` with Express.  By using `effects-as-data` with Express, you can write complex middleware and business logic using only easy-to-test, pure, deterministic functions.
 
+## Application Architecture
+![Effects-as-data HTTP Architecture](https://s3-us-west-2.amazonaws.com/effects-as-data/http-effects-as-data-v1.png)
+
+1) Client makes HTTP request.
+
+2) Request is routed to pure business logic function.
+
+3) Business logic function yields an action(s) to the E13A runtime.  An action is a JSON object with a `type` field and some metadata describing a side effect operation. The E13A runtime routes the action to a side effect handler.
+
+4) The side effect handler performs the operation described by the action and returns the result to E13A.
+
+5) E13A gets the return value from the business logic functions, wraps it as an HTTP response, and sends it to the client.
+
 ## Getting Started
 
 ### Install
