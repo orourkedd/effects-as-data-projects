@@ -22,7 +22,7 @@ This example shows how to use `effects-as-data` with Express.  By using `effects
   type: 'node',
   module: 'fs',
   function: 'writeFile',
-  args: ['content.txt', { content: "foo bar baz", { encoding: 'utf8' }]
+  args: ['content.txt', { content: "foo bar baz" }, { encoding: 'utf8' }]
 }
 ```
 
