@@ -28,7 +28,7 @@ This example shows how to use `effects-as-data` with Express.  By using `effects
 
 4) The side effect handler performs the operation described by the action and returns the result to E13A.
 
-5) E13A gets the return value from the business logic functions, wraps it as an HTTP response, and sends it to the client.
+5) E13A gets the return value from the business logic function, wraps it as an HTTP response, and sends it to the client.
 
 ## Getting Started
 
